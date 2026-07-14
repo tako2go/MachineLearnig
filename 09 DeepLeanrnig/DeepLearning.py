@@ -19,10 +19,10 @@ tf.keras.utils.set_random_seed(42)
 tf.config.experimental.enable_op_determinism()
 
 from keras.layers import Activation, Dense, Input
-from tensorflow.keras.models import Model
+from keras.models import Model
 from keras.models import Sequential, load_model
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.utils import plot_model
+from keras.utils import to_categorical
+from keras.utils import plot_model
 
 X_train = X_train.reshape(X_train.shape[0],784)[:6000]#X_train.shape[0]:画像枚数60000が入っている
 X_test = X_test.reshape(X_test.shape[0],784)[:1000]
@@ -39,18 +39,18 @@ model = Model(inputs=inputs, outputs=outputs)
 
 model.compile(optimizer="sgd",loss="categorical_crossentropy",
               metrics=["accuracy"])
-# plot_model(model,"m1.png",
-#            show_layer_names = False)
-# image = plt.imread("m1.png")
-# plt.figure(dpi=150)
-# plt.imshow(image)
-# plt.show()
-
-his = model.fit(X_train,y_train,epochs=5)
-
-plt.plot(his.history["accuracy"],label="acc",
-         marker = "o")
-plt.ylabel("accuracy")
-plt.xlabel("epoch")
-plt.legend(loc="best")
+plot_model(model,"m1.png",
+           show_layer_names = False)
+image = plt.imread("m1.png")
+plt.figure(dpi=150)
+plt.imshow(image)
 plt.show()
+
+# his = model.fit(X_train,y_train,epochs=5)
+
+# plt.plot(his.history["accuracy"],label="acc",
+#          marker = "o")
+# plt.ylabel("accuracy")
+# plt.xlabel("epoch")
+# plt.legend(loc="best")
+# plt.show()
